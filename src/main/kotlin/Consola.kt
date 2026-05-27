@@ -1,6 +1,23 @@
 package org.example
 
+import kotlin.system.exitProcess
+
 object Consola {
+
+    fun solicitarOpcion(): String{
+
+        val opciones = listOf("1", "2", "3", "4", "5")
+        var opcion: String? = null
+        do {
+            mostrarMenu()
+            val entrada = readLine()
+            if (entrada in opciones) {
+                opcion = entrada
+            } else
+                println("Opción no válida.\n")
+        } while (opcion == null)
+        return opcion
+    }
 
     fun solicitarNombrePokemon(): String {
 
@@ -55,5 +72,21 @@ object Consola {
             }
         } while (tipo2 == null)
         return tipo2
+    }
+
+    private fun mostrarMenu(){
+        println("###################")
+        println("#     Pokedex     #")
+        println("###################")
+        println()
+        println("Elige una opción: ")
+        println()
+        println("1. Registrar un Pokémon")
+        println("2. Actualizar datos de un pokémon")
+        println("3. Eliminar Pokémon")
+        println("4. Listar Pokémon")
+        println("5. Salir")
+        println()
+        print("Tu opcion -> ")
     }
 }
